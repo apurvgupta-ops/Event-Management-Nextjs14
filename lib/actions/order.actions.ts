@@ -8,7 +8,7 @@ import {
   GetOrdersByUserParams,
 } from "@/types";
 import { redirect } from "next/navigation";
-// import { handleError } from "../utils";
+import { handleError } from "../utils";
 import { connectToDatabase } from "../database";
 import Order from "../database/models/order.model";
 import Event from "../database/models/event.model";
@@ -61,7 +61,7 @@ export const createOrder = async (order: CreateOrderParams) => {
 
     return JSON.parse(JSON.stringify(newOrder));
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 };
@@ -124,7 +124,7 @@ export async function getOrdersByEvent({
 
     return JSON.parse(JSON.stringify(orders));
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }
@@ -165,7 +165,7 @@ export async function getOrdersByUser({
       totalPages: Math.ceil(ordersCount / limit),
     };
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }

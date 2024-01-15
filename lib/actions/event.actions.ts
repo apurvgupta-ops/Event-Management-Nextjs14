@@ -6,7 +6,7 @@ import { connectToDatabase } from "@/lib/database";
 import Event from "../database/models/event.model";
 import User from "../database/models/user.model";
 import Category from "../database/models/category.model";
-// import { handleError } from "@/lib/utils";
+import { handleError } from "@/lib/utils";
 
 import {
   CreateEventParams,
@@ -48,7 +48,7 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
 
     return JSON.parse(JSON.stringify(newEvent));
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }
@@ -64,7 +64,7 @@ export async function getEventById(eventId: string) {
 
     return JSON.parse(JSON.stringify(event));
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }
@@ -88,7 +88,7 @@ export async function updateEvent({ userId, event, path }: UpdateEventParams) {
 
     return JSON.parse(JSON.stringify(updatedEvent));
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }
@@ -102,7 +102,7 @@ export async function deleteEvent({ eventId, path }: DeleteEventParams) {
     if (deletedEvent) revalidatePath(path);
   } catch (error) {
     console.log(error);
-    // handleError(error);
+    handleError(error);
   }
 }
 
@@ -143,7 +143,7 @@ export async function getAllEvents({
       totalPages: Math.ceil(eventsCount / limit),
     };
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }
@@ -173,7 +173,7 @@ export async function getEventsByUser({
       totalPages: Math.ceil(eventsCount / limit),
     };
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }
@@ -206,7 +206,7 @@ export async function getRelatedEventsByCategory({
       totalPages: Math.ceil(eventsCount / limit),
     };
   } catch (error) {
-    // handleError(error);
+    handleError(error);
     console.log(error);
   }
 }

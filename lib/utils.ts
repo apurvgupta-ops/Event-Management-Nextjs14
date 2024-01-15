@@ -103,3 +103,15 @@ export function removeKeysFromQuery({
 //   console.error(error);
 //   throw new Error(typeof error === "string" ? error : JSON.stringify(error));
 // };
+
+export const handleError = (error: unknown) => {
+  console.error(error);
+
+  if (typeof error === "string") {
+    console.error("String error:", error);
+  } else if (error instanceof Error) {
+    console.error("Error instance:", error.message);
+  } else {
+    console.error("Unknown error:", JSON.stringify(error));
+  }
+};
